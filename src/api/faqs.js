@@ -9,11 +9,11 @@ const db = monk(process.env.MONGO_URI);
 // connect to collection
 const faqs = db.get("faqs");
 
-// Validate incoming faqs data through schema
+// Validate incoming faqs data through joi schema
 const schema = joi.object({
     question: joi.string().trim().required(),
     answer: joi.string().trim().required(),
-    video_url: joi.string().uri(),
+    vote_count: joi.number().integer().required().default(0),
 });
 
 const router = express.Router();
