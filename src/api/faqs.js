@@ -13,7 +13,8 @@ const faqs = db.get("faqs");
 const schema = joi.object({
     question: joi.string().trim().required(),
     answer: joi.string().trim().required(),
-    vote_count: joi.number().integer().required().default(0),
+    vote_count: joi.number().integer().default(0),
+    user_id: joi.string().trim().required(),
 });
 
 const router = express.Router();
